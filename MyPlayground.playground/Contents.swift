@@ -23,6 +23,7 @@ class VirtualVendingMachine {
         self.inputedYen = inputedYen
         var isBuyable = false
         
+        
         switch type {
         case .coffee:
             isBuyable = coffeePrice <= inputedYen && 0 < coffeeStock
@@ -38,7 +39,11 @@ class VirtualVendingMachine {
         var stock: Int = reduceStock(type: type)
         
         if isBuyable {
-            printResult(type: type, stock: stock)
+            print("\(type)を購入できました。")
+            print("\(type)はあと\(stock)本です。")
+            print("お釣り：\(changeAmount)円")
+        } else {
+            print("購入できませんでした。")
         }
     }
 
@@ -54,12 +59,6 @@ class VirtualVendingMachine {
             monsterStock -= 1
             return monsterStock
         }
-    }
-    
-    func printResult(type: DrinkType, stock: Int){
-        print("\(type)を購入できました。")
-        print("\(type)はあと\(stock)本です。")
-        print("お釣り：\(changeAmount)円")
     }
 }
 
