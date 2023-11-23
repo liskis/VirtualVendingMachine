@@ -17,27 +17,28 @@ class VirtualVendingMachine {
     var waterStock: Int = 15
     var monsterStock: Int = 5
     
-    var chengeAmount: Int = 0
+   
 
     func buyDrink(type: DrinkType, inputedYen: Int) {
         self.inputedYen = inputedYen
         var isBuyable = false
+        var changeAmount: Int = 0
         switch type {
         case .coffee:
             isBuyable = coffeePrice <= inputedYen && 0 < coffeeStock
-            chengeAmount = inputedYen - coffeePrice
+            changeAmount = inputedYen - coffeePrice
         case .water:
             isBuyable = waterPrice <= inputedYen && 0 < waterStock
-            chengeAmount = inputedYen - waterPrice
+            changeAmount = inputedYen - waterPrice
         case .monster:
             isBuyable = monsterPrice <= inputedYen && 0 < monsterStock
-            chengeAmount = inputedYen - monsterPrice
+            changeAmount = inputedYen - monsterPrice
         }
         var stock = reduceStock(type: type)
         if isBuyable {
             print("\(type)を購入できました。")
             print("\(type)はあと\(stock)本です。")
-            print("お釣り：\(chengeAmount)円")
+            print("お釣り：\(changeAmount)円")
         } else {
             print("\(type)を購入できませんでした。")
         }
@@ -60,5 +61,3 @@ class VirtualVendingMachine {
 
 let virtualVendingMachine = VirtualVendingMachine()
 virtualVendingMachine.buyDrink(type: .coffee, inputedYen: 150)
-
-
