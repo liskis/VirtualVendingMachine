@@ -17,8 +17,6 @@ class VirtualVendingMachine {
     var waterStock: Int = 15
     var monsterStock: Int = 5
     
-   
-
     func buyDrink(type: DrinkType, inputedYen: Int) {
         self.inputedYen = inputedYen
         var isBuyable = false
